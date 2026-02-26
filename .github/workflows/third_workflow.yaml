@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ls files
-        run: ls -a
+        run: lfsedfwes -a
       # - uses: actions/checkout@v4
       - name: Copy files
         run: |
