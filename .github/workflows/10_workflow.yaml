@@ -1,5 +1,5 @@
 name: 10 workflow
-on: [push]
+on: [workflow_dispatch]
 run-name: "Display context"
 jobs:
   run-first-command:
