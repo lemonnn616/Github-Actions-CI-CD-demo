@@ -1,0 +1,17 @@
+name: 7 workflow
+on:
+  schedule:
+    - cron: "*/2 * * * *"
+  workflow_run:
+    workflows: [Third workflow]
+    types:
+      - completed
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display EVENTS var
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
