@@ -1,0 +1,22 @@
+name: 6 workflow
+on:
+  push:
+    branches:
+      - main
+      - "page/*"
+      - "page/**"
+      - "!page/blog"
+    tags:
+      - v1.*
+      - "!v1.2.1"
+    paths:
+      - "**.html"
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display EVENTS var
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
