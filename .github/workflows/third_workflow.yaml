@@ -5,8 +5,14 @@ jobs:
   run-first-command:
     runs-on: ubuntu-latest
     steps:
-      - name: Ls files and copy Repo
-        run: ls -a
-      - uses: actions/checkout@v4
       - name: Ls files
+        run: ls -a
+      # - uses: actions/checkout@v4
+      - name: Copy files
+        run: |
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
+          git fetch origin
+          git checkout main
+      - name: Ls files 2
         run: ls -a
