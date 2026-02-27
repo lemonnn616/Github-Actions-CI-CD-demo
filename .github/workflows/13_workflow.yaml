@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Cache node_modules
         id: cashe-step
-        uses: actions/cashe@v3
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: "cache-file"
