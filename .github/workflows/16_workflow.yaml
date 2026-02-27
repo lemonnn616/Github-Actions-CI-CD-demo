@@ -1,0 +1,15 @@
+name: 16 workflow
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Custom Title"
+        type: string
+        default: "Testing text title"
+        required: false
+
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/workflow.yaml
+    with:
+      title: ${{ inputs.title }}
