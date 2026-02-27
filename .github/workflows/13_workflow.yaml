@@ -13,6 +13,6 @@ jobs:
           path: ~/.npm
           key: "cache-file"
       - name: Display cashe
-        run: echo '${{ steps.cashe-step.outputs }}'
+        run: echo '${{ toJSON(steps.cashe-step.outputs) }}'
       - name: Install node_modules
         run: npm install
