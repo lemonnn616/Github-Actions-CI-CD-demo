@@ -1,11 +1,12 @@
 name: 12 workflow
-on: [push]
+on: [workflow_dispatch]
 
 jobs:
   run-first-command:
     runs-on: ubuntu-latest
     steps:
       - name: First step
+        id: error-step
         run: exit 1
       - name: Runs on Canceled
         if: ${{ cancelled() }}
@@ -17,7 +18,7 @@ jobs:
         if: ${{ success() }}
         run: echo "Success"
       - name: Runs an any failure
-        if: ${{ failure() }}
+        if: ${{ failure() && steps.error-step.conclusion == 'failure' }}
         run: echo "Failure"
   run-second-job:
     runs-on: ubuntu-latest
