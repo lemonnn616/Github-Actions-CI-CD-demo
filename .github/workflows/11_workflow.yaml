@@ -1,5 +1,5 @@
 name: 11 workflow
-on: [push]
+on: [workflow_dispatch]
 env:
   WF_CUSTOM_VAR: 1
 jobs:
@@ -8,6 +8,8 @@ jobs:
     env:
       JOB_CUSTOM_VAR: 2
     steps:
+      - name: Set new var
+        run: echo "NEW_CUSTOM_VAR=NEW_VALUE" >> "$GITHUB_ENV"
       - name: Vars
         env:
           STEP_CUSTOM_VAR: 3
@@ -17,3 +19,4 @@ jobs:
           echo '${{ github.ref }}'
           echo $WF_CUSTOM_VAR
           echo '${{ env.JOB_CUSTOM_VAR }}'
+          echo $NEW_CUSTOM_VAR

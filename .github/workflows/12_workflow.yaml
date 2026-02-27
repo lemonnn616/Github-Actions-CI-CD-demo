@@ -1,0 +1,21 @@
+name: 12 workflow
+on: [push]
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step
+        run: sleep 30
+      - name: Runs on Canceled
+        if: ${{ cancelled() }}
+        run: echo "Cancelled"
+      - name: Runs an any case
+        if: ${{ always() }}
+        run: echo "Always"
+      - name: Runs an any Success
+        if: ${{ success() }}
+        run: echo "Success"
+      - name: Runs an any failure
+        if: ${{ failure() }}
+        run: echo "Failure"
