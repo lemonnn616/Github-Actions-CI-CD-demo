@@ -1,0 +1,17 @@
+name: Docker Test
+on: [workflow_dispatch]
+
+jobs:
+  test-docket-container:
+    runs-on: ubuntu-latest
+    container:
+      image: node:12
+      env:
+        NODE_ENV: develpment
+      ports:
+        - 80
+      # volumes:
+      #   - docker_volumes:/volumes
+    steps:
+      - name: Display node version
+        run: node -v
