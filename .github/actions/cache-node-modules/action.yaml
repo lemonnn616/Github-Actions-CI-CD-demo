@@ -5,6 +5,10 @@ inputs:
     required: false
     description: "enable or disable"
     default: 'true'
+outputs:
+  status:
+    value: 'Active'
+    description: "Random status"
 runs:
   using: 'composite'
   steps:
