@@ -4,8 +4,13 @@ on: [workflow_dispatch]
 jobs:
   test-docket-container:
     runs-on: ubuntu-latest
+    services:
+      custom_mysql:
+        image: mysql
+        ports:
+          - 3306
     container:
-      image: node:12
+      image: node:21-alpine3.17
       env:
         NODE_ENV: develpment
       ports:
@@ -13,5 +18,13 @@ jobs:
       # volumes:
       #   - docker_volumes:/volumes
     steps:
+      - name: Display service image
+        run: echo '${{ toJSON(job.services) }}'
       - name: Display node version
-        run: node -v
+        run: |
+          node -v
+          cat /etc/os-release
+      - name: Print new node version
+        uses: docker://node:18-buster-slim
+        with:
+          args: -v
